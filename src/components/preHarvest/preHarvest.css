@@ -1,0 +1,75 @@
+.pre-card {
+  background: #161d31;
+  border-radius: 8px;
+  padding: 18px;
+  border: 1px solid #27314a;
+  min-height: 210px;
+}
+
+.pre-card h3 {
+  margin: 0 0 12px;
+  font-size: 27px;
+  color: #f7f9ff;
+}
+
+.gains-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #d3def8;
+}
+
+.gains-grid > div {
+  font-size: 14px;
+}
+
+.gains-grid > div:nth-child(2),
+.gains-grid > div:nth-child(3) {
+  text-align: right;
+}
+
+.gains-grid.headings {
+  color: #9eb2df;
+}
+
+.gains-grid.net {
+  font-weight: 600;
+  color: #eef4ff;
+  margin-top: 10px;
+}
+
+.realised-gains {
+  margin: 18px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.realised-gains span {
+  font-size: 34px;
+  margin-left: 8px;
+}
+
+.pre-card .hover-value {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(206, 220, 255, 0.35);
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 740px) {
+  .pre-card {
+    padding: 14px;
+  }
+
+  .pre-card h3 {
+    font-size: 24px;
+  }
+
+  .realised-gains span {
+    font-size: 28px;
+    display: block;
+    margin: 6px 0 0;
+  }
+}

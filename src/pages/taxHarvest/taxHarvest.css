@@ -1,0 +1,169 @@
+.tax-page {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at 15% 0%,
+    #243d79 0%,
+    #11182a 30%,
+    #0b1120 100%
+  );
+}
+
+.tax-container {
+  width: 100%;
+  margin: 0;
+  padding: 14px 18px 22px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.title-row h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #f6f9ff;
+}
+
+.title-row .how-link {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #78a8ff;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.how-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cards-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.page-state {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #0b1120;
+  color: #f4f7ff;
+  font-size: 18px;
+}
+
+.page-state.error {
+  color: #ff8f9a;
+}
+
+.skeleton-block {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #1a233a;
+}
+
+.skeleton-block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: skeleton-shimmer 1.2s infinite;
+}
+
+.skeleton-title-row {
+  align-items: center;
+}
+
+.skeleton-title {
+  height: 38px;
+  width: 270px;
+}
+
+.skeleton-link {
+  height: 14px;
+  width: 92px;
+  border-radius: 4px;
+}
+
+.skeleton-notes {
+  height: 52px;
+  margin-bottom: 14px;
+}
+
+.skeleton-card {
+  min-height: 238px;
+}
+
+.skeleton-table {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #27314a;
+  background: #161d31;
+}
+
+.skeleton-table-head {
+  height: 42px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+.skeleton-row {
+  height: 60px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+.skeleton-row:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 940px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title-row h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tax-container {
+    width: 100%;
+    padding-inline: 6px;
+    padding-top: 8px;
+  }
+
+  .title-row {
+    margin-left: 6px;
+  }
+
+  .title-row h1 {
+    font-size: 30px;
+  }
+
+  .skeleton-title {
+    width: 220px;
+    height: 32px;
+  }
+}

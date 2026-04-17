@@ -1,0 +1,51 @@
+.notes-wrapper {
+  border: 1px solid #3560a8;
+  border-radius: 8px;
+  background: #0d1934;
+  overflow: hidden;
+}
+
+.notes-toggle {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: #e8efff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.notes-title::before {
+  content: "i";
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #5e84cc;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.notes-arrow {
+  transition: transform 0.2s ease;
+  opacity: 0.8;
+}
+
+.notes-arrow.open {
+  transform: rotate(180deg);
+}
+
+.notes-list {
+  margin: 0;
+  padding: 0 14px 14px 28px;
+  color: #d2ddf8;
+  font-size: 13px;
+  line-height: 1.6;
+}

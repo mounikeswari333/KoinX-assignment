@@ -1,0 +1,81 @@
+.post-card {
+  background: linear-gradient(140deg, #47a1ff 5%, #1f75fc 45%, #1a5ee2 100%);
+  border-radius: 8px;
+  padding: 18px;
+  border: 1px solid #61a4f5;
+  min-height: 210px;
+}
+
+.post-card h3 {
+  margin: 0 0 12px;
+  font-size: 27px;
+  color: #ffffff;
+}
+
+.post-card .gains-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #f6f9ff;
+}
+
+.post-card .gains-grid > div {
+  font-size: 14px;
+}
+
+.post-card .gains-grid > div:nth-child(2),
+.post-card .gains-grid > div:nth-child(3) {
+  text-align: right;
+}
+
+.post-card .gains-grid.headings {
+  color: #d3e7ff;
+}
+
+.post-card .gains-grid.net {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.effective-gains {
+  margin: 18px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.effective-gains span {
+  font-size: 34px;
+  margin-left: 8px;
+}
+
+.post-card .hover-value {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(236, 246, 255, 0.35);
+  text-underline-offset: 2px;
+}
+
+.savings-note {
+  margin: 12px 0 0;
+  color: #fff7d8;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@media (max-width: 740px) {
+  .post-card {
+    padding: 14px;
+  }
+
+  .post-card h3 {
+    font-size: 24px;
+  }
+
+  .effective-gains span {
+    display: block;
+    margin: 6px 0 0;
+    font-size: 30px;
+  }
+}
