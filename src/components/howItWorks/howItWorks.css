@@ -32,18 +32,11 @@
   transform: rotate(45deg);
 }
 
-.how-trigger.is-open .how-card {
+.how-trigger:hover .how-card,
+.how-trigger:focus-within .how-card {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .how-trigger:hover .how-card {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
 }
 
 .how-card p {
@@ -59,8 +52,24 @@
 }
 
 @media (max-width: 640px) {
+  .title-row {
+    position: relative;
+  }
+
+  .how-trigger {
+    position: static;
+  }
+
   .how-card {
-    width: min(340px, 92vw);
-    left: 0;
+    top: calc(100% + 6px);
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-width: none;
+  }
+
+  .how-card::before {
+    left: auto;
+    right: 24px;
   }
 }
