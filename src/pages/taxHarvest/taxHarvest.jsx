@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HeaderBar from "../../components/headerBar/headerBar";
 import NotesDisclaimer from "../../components/notesDisclaimer/notesDisclaimer";
 import HowItWorks from "../../components/howItWorks/howItWorks";
@@ -48,6 +48,8 @@ function TaxHarvestPage() {
   const [selectedIds, setSelectedIds] = useState(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false);
+  const howTriggerRef = useRef(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -77,6 +79,28 @@ function TaxHarvestPage() {
     };
 
     loadData();
+  }, []);
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!howTriggerRef.current?.contains(event.target)) {
+        setIsHowItWorksOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsHowItWorksOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+    };
   }, []);
 
   const selectedHoldings = useMemo(
@@ -134,8 +158,19 @@ function TaxHarvestPage() {
       <main className="tax-container">
         <section className="title-row">
           <h1>Tax Harvesting</h1>
-          <div className="how-trigger">
-            <button type="button" className="how-link">
+          <div
+            ref={howTriggerRef}
+            className={`how-trigger ${isHowItWorksOpen ? "is-open" : ""}`}
+            onMouseEnter={() => setIsHowItWorksOpen(true)}
+            onMouseLeave={() => setIsHowItWorksOpen(false)}
+          >
+            <button
+              type="button"
+              className="how-link"
+              aria-expanded={isHowItWorksOpen}
+              aria-haspopup="true"
+              onClick={() => setIsHowItWorksOpen((prev) => !prev)}
+            >
               How it works?
             </button>
             <HowItWorks />
