@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HeaderBar from "../../components/headerBar/headerBar";
 import NotesDisclaimer from "../../components/notesDisclaimer/notesDisclaimer";
 import HowItWorks from "../../components/howItWorks/howItWorks";
@@ -51,6 +51,7 @@ function TaxHarvestPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [isHowOpen, setIsHowOpen] = useState(false);
+  const howTriggerRef = useRef(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -81,6 +82,30 @@ function TaxHarvestPage() {
 
     loadData();
   }, []);
+
+  useEffect(() => {
+    const handleOutsidePress = (event) => {
+      if (window.innerWidth > HOW_PANEL_BREAKPOINT) return;
+      if (!isHowOpen) return;
+
+      if (howTriggerRef.current?.contains(event.target)) return;
+      setIsHowOpen(false);
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > HOW_PANEL_BREAKPOINT) {
+        setIsHowOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsidePress);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsidePress);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isHowOpen]);
 
   const selectedHoldings = useMemo(
     () => holdings.filter((holding) => selectedIds.has(holding.id)),
@@ -143,7 +168,10 @@ function TaxHarvestPage() {
       <main className="tax-container">
         <section className="title-row">
           <h1>Tax Harvesting</h1>
-          <div className={`how-trigger ${isHowOpen ? "mobile-open" : ""}`}>
+          <div
+            ref={howTriggerRef}
+            className={`how-trigger ${isHowOpen ? "mobile-open" : ""}`}
+          >
             <button
               type="button"
               className="how-link"
