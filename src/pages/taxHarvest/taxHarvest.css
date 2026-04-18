@@ -156,10 +156,22 @@
 
   .title-row {
     margin-left: 6px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .title-row h1 {
     font-size: 30px;
+  }
+
+  .how-trigger {
+    width: 100%;
+    display: block;
+  }
+
+  .title-row .how-link {
+    display: none;
   }
 
   .skeleton-title {
