@@ -13,6 +13,8 @@ import {
 } from "../../utils/calculations";
 import "./taxHarvest.css";
 
+const HOW_PANEL_BREAKPOINT = 940;
+
 function TaxHarvestSkeleton() {
   return (
     <div className="tax-page">
@@ -48,6 +50,7 @@ function TaxHarvestPage() {
   const [selectedIds, setSelectedIds] = useState(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isHowOpen, setIsHowOpen] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -115,6 +118,12 @@ function TaxHarvestPage() {
     });
   };
 
+  const handleHowClick = () => {
+    if (window.innerWidth <= HOW_PANEL_BREAKPOINT) {
+      setIsHowOpen((prev) => !prev);
+    }
+  };
+
   if (isLoading) {
     return <TaxHarvestSkeleton />;
   }
@@ -134,8 +143,13 @@ function TaxHarvestPage() {
       <main className="tax-container">
         <section className="title-row">
           <h1>Tax Harvesting</h1>
-          <div className="how-trigger">
-            <button type="button" className="how-link">
+          <div className={`how-trigger ${isHowOpen ? "mobile-open" : ""}`}>
+            <button
+              type="button"
+              className="how-link"
+              aria-expanded={isHowOpen}
+              onClick={handleHowClick}
+            >
               How it works?
             </button>
             <HowItWorks />

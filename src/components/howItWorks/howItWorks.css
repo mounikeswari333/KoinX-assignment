@@ -51,25 +51,38 @@
   line-height: 1.5;
 }
 
-@media (max-width: 640px) {
-  .title-row {
+@media (max-width: 940px) {
+  .how-trigger {
     position: relative;
+    display: inline-block;
   }
 
-  .how-trigger {
-    position: static;
+  .how-trigger:hover .how-card,
+  .how-trigger:focus-within .how-card {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+  }
+
+  .how-trigger.mobile-open .how-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .how-card {
-    top: calc(100% + 6px);
+    position: fixed;
+    top: 84px;
     left: 8px;
     right: 8px;
     width: auto;
     max-width: none;
+    max-height: min(62vh, 420px);
+    overflow-y: auto;
+    z-index: 60;
   }
 
   .how-card::before {
-    left: auto;
-    right: 24px;
+    display: none;
   }
 }
